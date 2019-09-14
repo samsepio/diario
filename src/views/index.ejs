@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="author"content="walter">
+		<title>Diario Walter</title>
+		<link rel="stylesheet"href="/css/main.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav class="navbar navbar-dark bg-dark">
+			<span class="navbar-brand mb-0 h1 mx-auto">Diario Personal</span>
+		</nav>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5">
+					<div class="card">
+						<div class="card-body">
+							<form action="/add" method="POST">
+								<div class="form-group">
+									<input class="form-control"type="text"name="day"placeholder="Día"id="dia">
+								</div>
+								<div class="form-group">
+              								<textarea class="form-control" name="description" cols="80"placeholder="Que Paso Hoy"id="descripcion"></textarea>
+								</div>
+								<button class="btn btn-primary btn-block"type="submit">Agregar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="card" style="width: 18rem;">
+						<% for(var i=0; i < tasks.length; i++) { %>
+						<div class="card-body">
+							<h5 class="card-title"><%= tasks[i].day %></h5>
+							<p class="card-text"><%=  tasks[i].description %></p>
+							<a class="btn btn-danger"href="/delete/<%= tasks[i]._id %>">Eliminar</a>
+							<a class="btn btn-info"href="/editar/<%= tasks[i]._id %>">Editar</a>
+						</div>
+						<% } %>
+				</div>
+	</body>
+</html>
